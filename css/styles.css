@@ -38,6 +38,24 @@
 
     font-weight: 400;
   }
+
+/* Links & Buttons */
+  a {
+    color: #49AA26;
+    text-decoration: none;
+
+    transition: .2s;
+  }
+
+  a:hover {
+    color: #3dd705;
+  }
+
+  .button.new {
+    display: inline-block;
+    margin-bottom: .8rem;
+  }
+
 /* ====== Globals */
 
 
