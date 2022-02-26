@@ -132,6 +132,11 @@
 /*  ====== Cards */
 
 /* Table ====== */
+  #transaction {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
 
   #data-table {
     width: 100%;
