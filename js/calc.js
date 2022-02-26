@@ -106,6 +106,12 @@ function addTransaction(transaction) {
   reload();
 }
 
+function removeTransaction(index) {
+  transactionList.splice(index, 1);
+  
+  reload();
+}
+
 function init() {
   listAll();
 
@@ -120,10 +126,3 @@ function reload() {
 }
 
 init();
-
-addTransaction({
-  description: "add new",
-  amount: 2000,
-  date: "26/02/2022"
-});
-
