@@ -41,87 +41,89 @@ const format = {
   }
 };
 
-function listAll() {
-  transactionList.forEach((item) => {
-    let search = item.amount.toString().includes("-");
+const DOM = {
+  listAll() {
+    transactionList.forEach((item) => {
+      let search = item.amount.toString().includes("-");
 
-    const type = search ? "expense" : "income";
+      const type = search ? "expense" : "income";
 
-    document.querySelector("#data-table tbody").innerHTML += `
-      <tr>
-        <td class="description">${item.description}</td>
-        <td class=${type}>R$ ${item.amount.toFixed(2).replace(".", ",")}</td>
-        <td class="date">${item.date}</td>
-        <td>
-          <img src="./assets/minus.svg" alt="Remover Transação">
-        </td>
-      </tr>
-    `;
-  });
-}
+      document.querySelector("#data-table tbody").innerHTML += `
+        <tr>
+          <td class="description">${item.description}</td>
+          <td class=${type}>R$ ${item.amount.toFixed(2).replace(".", ",")}</td>
+          <td class="date">${item.date}</td>
+          <td>
+            <img src="./assets/minus.svg" alt="Remover Transação">
+          </td>
+        </tr>
+      `;
+    });
+  },
 
-function incomes() {
-  document.querySelectorAll("#data-table tbody tr td").forEach((item) => {
-    if (item.classList == "income") {
-      let value = item.innerHTML;
-      let data = format.getValue(value);
+  incomes() {
+    document.querySelectorAll("#data-table tbody tr td").forEach((item) => {
+      if (item.classList == "income") {
+        let value = item.innerHTML;
+        let data = format.getValue(value);
 
-      totalIncome += Number(data);
+        totalIncome += Number(data);
 
-      cards.card_income.innerHTML = `R$ ${format.showValue(totalIncome)}`;
-    }
-  });
-}
+        cards.card_income.innerHTML = `R$ ${format.showValue(totalIncome)}`;
+      }
+    });
+  },
 
-function expenses() {
-  document.querySelectorAll("#data-table tbody tr td").forEach((item) => {
-    if (item.classList == "expense") {
-      let value = item.innerHTML;
-      let data = format.getValue(value);
+  expenses() {
+    document.querySelectorAll("#data-table tbody tr td").forEach((item) => {
+      if (item.classList == "expense") {
+        let value = item.innerHTML;
+        let data = format.getValue(value);
 
-      totalExpense += Number(data);
+        totalExpense += Number(data);
 
-      cards.card_expense.innerHTML = `R$ ${format.showValue(totalExpense)}`;
-    }
-  });
-}
+        cards.card_expense.innerHTML = `R$ ${format.showValue(totalExpense)}`;
+      }
+    });
+  },
 
-function total() {
-  let total = totalIncome - format.showValueTotal(totalExpense);
+  total() {
+    let total = totalIncome - format.showValueTotal(totalExpense);
 
-  cards.card_total.innerHTML = `R$ ${total}`;
+    cards.card_total.innerHTML = `R$ ${total}`;
 
-}
+  },
 
-function clearTransactions() {
-  totalIncome = 0;
-  totalExpense = 0;
+  clearTransactions() {
+    totalIncome = 0;
+    totalExpense = 0;
 
-  document.querySelector("#data-table tbody").innerHTML = "";
-}
+    document.querySelector("#data-table tbody").innerHTML = "";
+  },
 
-function addTransaction(transaction) {
-  transactionList.push(transaction);
+  addTransaction(transaction) {
+    transactionList.push(transaction);
 
-  reload();
-}
+    reload();
+  },
 
-function removeTransaction(index) {
-  transactionList.splice(index, 1);
-  
-  reload();
+  removeTransaction(index) {
+    transactionList.splice(index, 1);
+
+    reload();
+  }
 }
 
 function init() {
-  listAll();
+  DOM.listAll();
 
-  incomes();
-  expenses();
-  total();
+  DOM.incomes();
+  DOM.expenses();
+  DOM.total();
 }
 
 function reload() {
-  clearTransactions();
+  DOM.clearTransactions();
   init();
 }
 
