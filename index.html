@@ -33,7 +33,7 @@
           <span>Entradas</span>
           <img src="./assets/income.svg" alt="Imagem de Entrada de dinheiro">
         </h3>
-        <p>R$ 5.000,00</p>
+        <p id="card_income">R$ 5.000,00</p>
       </div>
 
       <div class="card">
@@ -41,7 +41,7 @@
           <span>Saídas</span>
           <img src="./assets/expense.svg" alt="Imagem de Saída de dinheiro">
         </h3>
-        <p>R$ 2.000,00</p>
+        <p id="card_expense">R$ 2.000,00</p>
       </div>
 
       <div class="card total">
@@ -49,7 +49,7 @@
           <span>Total</span>
           <img src="./assets/total.svg" alt="Imagem de total de dinheiro">
         </h3>
-        <p>R$ 3.000,00</p>
+        <p id="card_total">R$ 3.000,00</p>
       </div>
     </section>
 
@@ -69,32 +69,7 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td class="description">Luz</td>
-            <td class="expense">- R$ 500,00</td>
-            <td class="date">29/02/2022</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Remover Transação">
-            </td>
-          </tr>
-
-          <tr>
-            <td class="description">Criar Web Site</td>
-            <td class="income">R$ 5000,00</td>
-            <td class="date">29/02/2022</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Remover Transação">
-            </td>
-          </tr>
-
-          <tr>
-            <td class="description">Internet</td>
-            <td class="expense">- R$ 200,00</td>
-            <td class="date">29/02/2022</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Remover Transação">
-            </td>
-          </tr>
+          
         </tbody>
       </table>
     </section>
@@ -104,7 +79,7 @@
     <div class="modal">
       <div id="form">
         <h2>Nova Transação</h2>
-        <form action="">
+        <form>
           <div class="input-group">
             <label class="sr-only" for="description">Descrição</label>
             <input 
@@ -153,5 +128,6 @@
 </body>
 
 <script src="./js/modal.js"></script>
+<script src="./js/calc.js" defer type="module"></script>
 
 </html>
