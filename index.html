@@ -79,7 +79,7 @@
     <div class="modal">
       <div id="form">
         <h2>Nova Transação</h2>
-        <form>
+        <form action="" onsubmit="Form.createTransaction(event)">
           <div class="input-group">
             <label class="sr-only" for="description">Descrição</label>
             <input 
@@ -127,6 +127,7 @@
 
 </body>
 
+<script src="./js/utils.js"></script>
 <script src="./js/modal.js"></script>
 <script src="./js/calc.js"></script>
 
