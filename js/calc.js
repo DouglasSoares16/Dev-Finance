@@ -1,28 +1,45 @@
-import utils from "./utils.js";
+// import utils from "./js";
 
 let totalIncome = 0;
 let totalExpense = 0;
 
+let cards = {
+  card_income: document.getElementById("card_income"),
+  card_expense: document.getElementById("card_expense"),
+  card_total: document.getElementById("card_total"),
+};
+
 const transactionList = [
   {
-    id: "1",
     description: "Internet",
     amount: -500,
     date: "26/02/2022"
   },
   {
-    id: "2",
     description: "WebSite",
     amount: 2000,
     date: "26/02/2022"
   },
   {
-    id: "3",
     description: "WebSite KDC Automóveis",
     amount: 2000,
     date: "26/02/2022"
   }
 ];
+
+const format = {
+  getValue(value) {
+    return value.replace("R$", "").replace(",", ".");
+  },
+
+  showValue(value) {
+    return value.toFixed(2).replace(".", ",")
+  },
+
+  showValueTotal(value) {
+    return Number(value.toString().replace("-", ""))
+  }
+};
 
 function listAll() {
   transactionList.forEach((item) => {
@@ -47,11 +64,11 @@ function incomes() {
   document.querySelectorAll("#data-table tbody tr td").forEach((item) => {
     if (item.classList == "income") {
       let value = item.innerHTML;
-      let data = utils.format.getValue(value);
+      let data = format.getValue(value);
 
       totalIncome += Number(data);
 
-      document.getElementById("card_income").innerHTML = `R$ ${utils.format.showValue(totalIncome)}`;
+      cards.card_income.innerHTML = `R$ ${format.showValue(totalIncome)}`;
     }
   });
 }
@@ -60,19 +77,19 @@ function expenses() {
   document.querySelectorAll("#data-table tbody tr td").forEach((item) => {
     if (item.classList == "expense") {
       let value = item.innerHTML;
-      let data = utils.format.getValue(value);
+      let data = format.getValue(value);
 
       totalExpense += Number(data);
 
-      document.getElementById("card_expense").innerHTML = `R$ ${utils.format.showValue(totalExpense)}`;
+      cards.card_expense.innerHTML = `R$ ${format.showValue(totalExpense)}`;
     }
   });
 }
 
 function total() {
-  let total = totalIncome - utils.format.showValueTotal(totalExpense);
+  let total = totalIncome - format.showValueTotal(totalExpense);
 
-  document.getElementById("card_total").innerHTML = `R$ ${total}`;
+  cards.card_total.innerHTML = `R$ ${total}`;
 
 }
 
@@ -88,7 +105,6 @@ function addTransaction(transaction) {
 
   reload();
 }
-
 
 function init() {
   listAll();
@@ -106,7 +122,6 @@ function reload() {
 init();
 
 addTransaction({
-  id: "4",
   description: "add new",
   amount: 2000,
   date: "26/02/2022"
