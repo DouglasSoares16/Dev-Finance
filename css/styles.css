@@ -1,6 +1,8 @@
 /* Globals ====== */
   :root {
     --dark-blue: #363f5f;
+
+    font-size: 93.75%;
   }
 
   * {
@@ -193,3 +195,20 @@
 
     opacity: 0.6;
   }
+
+/* ====== Footer */
+
+
+/* Responsive ====== */
+
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
+}
